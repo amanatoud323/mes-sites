@@ -1,0 +1,753 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Structure globale pour coller le footer en bas */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+/* Alignement global de la page pour repousser le footer vers le bas */
+html {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Prend au minimum toute la hauteur de l'écran */
+  }
+  
+  /* Le footer prend automatiquement sa place tout en bas */
+  footer, .footer {
+    margin-top: auto; /* Repousse le footer tout en bas si le contenu est court */
+    width: 100%;
+    background-color: #0056b3; /* Votre couleur bleue principale */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+/* 1. EN-TÊTE FIXE */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: blue;
+    z-index: 1000;
+    box-shadow: 0 2px 10px blue;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 75px;
+    width: auto;
+    display: block;
+}
+/* --- Style du Logo et Animé --- */
+.logo img {
+    height: 75px;
+    width: auto; /* Laisse la largeur s'adapter naturellement pour tout afficher */
+    border-radius: 8px; /* Des coins légèrement arrondis et modernes, sans couper le texte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+    /* Animation de mouvement continu */
+    animation: logoFlotter 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+/* l'affichage du site sur différents écran*/
+/* --- Par défaut (Grands écrans / Ordinateurs) --- */
+.menu-toggle {
+    display: none; /* Le bouton hamburger est caché sur PC */
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ff7b00;
+}
+
+
+/* --- Pour les petits écrans (Téléphones et tablettes, ex: en dessous de 768px) --- */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Le bouton hamburger apparaît sur mobile */
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #ffffff;
+        transition: 0.3s ease;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 90px; /* Juste sous l'en-tête */
+        left: -100%; /* Masqué hors de l'écran par défaut */
+        width: 100%;
+        background-color: #0d47a1; /* Le bleu pro AFROGEC */
+        transition: left 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu ul {
+        flex-direction: column; /* Les liens s'empilent verticalement */
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        gap: 20px;
+    }
+
+    /* Quand on clique sur le bouton, le JS ajoute la classe .active pour faire glisser le menu */
+    .nav-menu.active {
+        left: 0; 
+    }
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes logoFlotter {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: burlywood;
+}
+
+/* CONTENU PRINCIPAL */
+main {
+    flex: 1; /* Pousse le footer tout en bas */
+    padding-top: 110px; /* Espace pour ne pas être caché par le header fixe */
+    padding-bottom: 20px;
+}
+
+/* 2. PIED DE PAGE */
+.footer {
+    background-color: blue; /* Bleu pro */
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-links a {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-2px);
+}
+/* Style du bouton Hamburger (masqué par défaut sur grand écran, visible si besoin) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    transition: 0.3s ease;
+}
+
+/* --- Gestion Responsive / Menu mobile --- */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Affiche le bouton sur les petits écrans */
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 90px; /* Juste sous le header */
+        left: -100%; /* Caché hors de l'écran par défaut */
+        width: 100%;
+        background-color: #0d47a1; /* Fond bleu pro assorti */
+        flex-direction: column;
+        align-items: center;
+        transition: left 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        gap: 20px;
+    }
+
+    /* Classe active ajoutée par JavaScript pour faire glisser le menu */
+    .nav-menu.active {
+        left: 0; 
+    }
+}
+/* --- Section Héro / Accueil avec une belle image de fond --- */
+.hero-section {
+    /* Utilise une image de ton dossier d'images (ex: image_2.png) avec un filtre sombre semi-transparent */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/WhatsApp Image 2026-11-05 at 12.01.02.jpeg') no-repeat center center/cover;
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+    margin-bottom: 0; /* Supprime l'espace pour coller proprement la suite */
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* --- Section Présentation (Sur fond blanc propre) --- */
+.about-preview {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    background-color: #ffffff; /* Fond blanc net et professionnel */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.about-preview h2 {
+    color: blue; /* Bleu pro AFROGEC */
+    font-size: 26px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid blue ; /* Touche blue dynamique */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.about-preview p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+.highlight-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.cta-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color:blue;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #0d47a1;
+    border: 2px solid #0d47a1;
+}
+
+.btn-secondary:hover {
+    background-color: #0d47a1;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+/* --- Style de la page Réalisations / Galerie --- */
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/WhatsApp Image 2026-11-05 at 12.01.04.jpeg') no-repeat center center/cover;
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.page-header p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+.gallery-section {
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 250px;
+    background-color: #eaeaea;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Effet de zoom élégant au survol de la souris */
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(13, 71, 161, 0.9), transparent);
+    color: #ffffff;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: blue; /* Touche orange du logo */
+}
+
+.gallery-overlay p {
+    font-size: 14px;
+    margin: 0;
+}
+/* ==========================================================================
+   PAGE À PROPOS - STYLES GLOBAUX & CORRECTION DU PIED DE PAGE (FOOTER)
+   ========================================================================== */
+
+   :root {
+    --primary-color:blue;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    --radius: 10px;
+  }
+  
+  /* 1. ANCRAGE DU PIED DE PAGE TOUT EN BAS (STICKY FOOTER) */
+  html {
+    height: 100%;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9; }
+    
+   
+  /* Le contenu principal prend tout l'espace disponible */
+  main, .main-content {
+    flex: 1 0 auto;
+  }
+  
+  section {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: 0 auto 30px auto;
+  }
+  
+  h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+  }
+  
+  /* ==========================================================================
+     2. SECTION STATISTIQUES (CHIFFRES CLÉS)
+     ========================================================================== */
+  
+  .stats-section {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 40px 20px;
+    box-shadow: var(--shadow);
+  }
+  
+  .stats-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .stat-card .stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    line-height: 1;
+  }
+  
+  .stat-card .stat-label {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  
+  /* ==========================================================================
+     3. SECTION ASSOCIÉS & DIRECTION (2 PERSONNES - ALIGNÉES HORIZONTALEMENT)
+     ========================================================================== */
+  
+  .associes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+  
+  .associe-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+  }
+  
+  .associe-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .associe-img-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
+  }
+  
+  .associe-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .associe-card h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.4rem;
+  }
+  
+  .associe-card .role {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  
+  .associe-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+  }
+  
+  /* ==========================================================================
+     4. SECTION PARTENAIRES (1 PARTENAIRE)
+     ========================================================================== */
+  
+  .partenaire-single {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+  }
+  
+  .partenaire-single img {
+    max-width: 180px;
+    height: auto;
+  margin-bottom: 15px;
+}
+
+.partenaire-single h3 {
+  margin: 10px 0;
+  color: var(--text-dark);
+}
+
+.partenaire-single p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   5. SECTION PARC D'ENGINS ET GALERIE PHOTOS (GRILLE RÉGULIÈRE ALIGNÉE)
+   ========================================================================== */
+
+.engins-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.engin-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.engin-card:hover {
+  transform: translateY(-5px);
+}
+
+.engin-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.engin-info {
+  padding: 15px 20px;
+  flex-grow: 1;
+}
+
+.engin-info h4 {
+  margin: 0 0 8px 0;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+
+.engin-info p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Galerie Vidéos */
+.videos-gallery h3 {
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.video-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 15px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.video-item video {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: #000;
+}
+
+.video-item p {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+/* ==========================================================================
+   6. STYLE DU PIED DE PAGE (FOOTER FIXÉ EN BAS)
+   ========================================================================== */
+
+footer, .footer {
+  flex-shrink: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px; }/* Positionne le pied de page tout en bas */
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETTES & MOBILES)
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .engins-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .associes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .engins-gallery,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
